@@ -17,6 +17,7 @@ public class GitHubExempel1 {
     public static void main(String[] args) {
         System.out.println("Detaa är ett GitHub Exempel!");
         System.out.println("Detta är en ny rad");
+        System.out.println("Detta är en tredje rad");
     }
     
 }
