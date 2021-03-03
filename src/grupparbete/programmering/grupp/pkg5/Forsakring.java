@@ -7,15 +7,11 @@ package grupparbete.programmering.grupp.pkg5;
 
 /**
  *
- * @author lilja
+ * @author schum
  */
-public class GrupparbeteProgrammeringGrupp5 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("Hej");
-    }
+public class Forsakring {
     
+    // Attribut för försäkringen. Beroende på bilens ålder ingår en hel- eller halvförsäkring
+    boolean halvforsakring;
+    boolean helforsakring;
 }
