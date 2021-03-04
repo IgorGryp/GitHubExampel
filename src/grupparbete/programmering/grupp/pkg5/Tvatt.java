@@ -11,30 +11,17 @@ package grupparbete.programmering.grupp.pkg5;
  */
 public class Tvatt {
     
-    String avspolad;
-    String schamponerad;
-    String dammsugen;
-    String glasputs;
-    
-// Konstruktor för klassen för att kunna skapa olika "tvättpaket"    
-public Tvatt (String avspolad, String schamponerad, String dammsugen, String glasputs){
-    this.avspolad = avspolad;
-    this.schamponerad = schamponerad;
-    this. dammsugen = dammsugen;
-    this.glasputs = glasputs;
+// Skapar metoder för de olika tvättalternativen som erbjuds
+public static void LitenTvatt () {
+    System.out.println("Nu är bilen avspolad och en liten tvätt är utförd");
 }
 
-
-public void LitenTvatt () {
-    System.out.println("Nu är bilen" + this.avspolad + "och en liten tvätt är utförd");
+public static void MellanTvatt () {
+    System.out.println("Nu är bilen avspolad och schamponerad och en mellanstor tvätt är utförd");
 }
 
-public void MellanTvatt () {
-    System.out.println("Nu är bilen" + this.avspolad + " och " + this.schamponerad + "och en mellanstor tvätt är utförd");
-}
-
-public void StorTvatt () {
-    System.out.println("Nu är bilen" + this.avspolad + " och " + this.schamponerad + " samt " + this.dammsugen + " och en " + this.glasputs + " är utförd. En stor tvätt");
+public static void StorTvatt () {
+    System.out.println("Nu är bilen avspolad, schamponerad, dammsugen och fönsterputs är utförd. En stor tvätt helt enkelt.");
 }  
 
 }

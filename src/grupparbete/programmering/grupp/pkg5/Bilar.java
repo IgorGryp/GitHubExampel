@@ -23,7 +23,7 @@ public class Bilar {
     String vaxellada;
     
     // Skapar en ArrayList för bilarna som finns i lager
-    public static ArrayList <Bilar> Bilar = new ArrayList<>();
+    public static ArrayList <Bilar> listaBilar = new ArrayList<>();
     
     
     // Skapar konstruktor för klassen Bilar
@@ -36,4 +36,16 @@ public class Bilar {
         this.pris = pris;
         this.vaxellada = vaxellada;
         }
+    
+    public void Beskrivning(){
+        System.out.println(": " +this.tillverkare + " " + this.modell + " årsmodell " +this.arsmodell + " i färgen " + this.farg + " som har gått " + this.mil + " mil" + " och kostar " + this.pris + ":- " + "Växellådan är " + this.vaxellada +".");
+    }
+    
+    public void Kopa (){
+        System.out.println("Säljare: Vad roligt att du vill köpa denna " + this.tillverkare + " " + this.modell + " för " + this.pris + " kr av oss!");
+    }
+    
+    public static void KopaInBil (String inkopTillverkare, String inkopModell, String inkopArsmodell, String inkopFarg, int inkopMil, int inkopPris, String inkopVaxellada){
+       Bilar.listaBilar.add(new Bilar(inkopTillverkare, inkopModell, inkopArsmodell, inkopFarg, inkopMil, inkopPris, inkopVaxellada));
+    }
 }
