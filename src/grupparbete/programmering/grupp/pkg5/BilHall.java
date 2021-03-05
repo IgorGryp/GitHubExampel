@@ -120,69 +120,87 @@ public class BilHall {
         }
         
         else if (menyval == 3){
-            System.out.println("Vad roligt att du vill titta på en av våra bilar i lager");
-            System.out.println("Vi har följande bilar att erbjuda");
-            System.out.println("");
-            
-            // Skapar en räknare för att visa rätt indexposition i ArrayListan för bilar (börjar på 0, d.v.s. samma som index i listan)
-            int j = 0;
-            
-            // En forEach-loop går igenom listan med bilar och anropar medtoden Beskrivning () i klassen bilar som skriver ut information
-            // Samtidigt så räknas räknaren upp och skrivs ut för varje varv. På så vis får varje bil ett nummer man kan hänvisa till.
-            // När första indexet i listan skrivs ut kommer räknaren dock ha värde 1, så detta behöver man hålla koll på längre ned när.
-            // kunden sen ska välja bil.
-            
-            for (Bilar i: Bilar.listaBilar)
-            {
-                j++;
-                System.out.print("Alternativ " + j);
-                i.Beskrivning();                   
-            }
+            // Om det inte finns några bilar i lager ges felmeddelande.
+            if (Bilar.listaBilar.size() < 1){
+                System.out.println("Tyvärr. Vi har inga bilar i lager idag");
+            } 
+            else {
+                System.out.println("Säljare: Vad roligt att du vill titta på en av våra bilar i lager");
+                System.out.println("Vi har följande bilar att erbjuda");
+                System.out.println("");
+
+                // Skapar en räknare för att visa rätt indexposition i ArrayListan för bilar (börjar på 0, d.v.s. samma som index i listan)
+                int j = 0;
+
+                // En forEach-loop går igenom listan med bilar och anropar medtoden Beskrivning () i klassen bilar som skriver ut information
+                // Samtidigt så räknas räknaren upp och skrivs ut för varje varv. På så vis får varje bil ett nummer man kan hänvisa till.
+                // När första indexet i listan skrivs ut kommer räknaren dock ha värde 1, så detta behöver man hålla koll på längre ned när.
+                // kunden sen ska välja bil.
+
+                for (Bilar i: Bilar.listaBilar)
+                {
+                    j++;
+                    System.out.print("Alternativ " + j);
+                    i.Beskrivning();                   
+                }
+            }  
         }
     
         else if (menyval == 4){
-            System.out.println("Säljare: Jag har förstått att du har bestämt dig för en bil. Vilken föll valet på?");
-            System.out.println("Det blir får bli bil nummer: "); int kopval = scan.nextInt();
-            
-            // Kund gör ett val mot bakgrund av listan som presenterades i menyn ovan (valet scannas av). Observera att vi behöver "backa" kundens val 
-            // med -1 p.g.a. att räknaren och Arrayen inte riktigt stämmer överens när vi anropar vilket objekt/bil som ska köpas i metoden Kopa (). Köpet genomförs. 
-            // Objektet/bilen tas sedan bort ifrån ArrayListan med metoden remove.
-            
-            Bilar.listaBilar.get(kopval-1).Kopa();
-            Bilar.listaBilar.remove(kopval-1);
-            System.out.println("Stort GRATTIS till din nya fina bil!");
-            System.out.println("");
-            
-            System.out.println("Till bilen INGÅR dessutom en försäkring i 3 månader!");
-            System.out.println("");
-            
-            // Beroende på hur långt bilen/objektet har gått så ingår en hel eller halvförsäkring i köpet.
-            // Detta kollar vi genom att anropa objektets attribut för antal mil och anropar olika metoder i
-            // klassen för försäkring beroende på utfall.
-            
-            System.out.print("Eftersom bilen har gått " + Bilar.listaBilar.get(kopval-1).mil + " mil så ingår det en ");
-            
-            if (Bilar.listaBilar.get(kopval-1).mil < 8000){
-                Forsakring.tecknaHelForsakring();
+            // Om det inte finns några bilar i lager så ges ett felmeddelande.
+            if (Bilar.listaBilar.size() < 1){
+                System.out.println("Tyvärr. Vi har inga bilar i lager att sälja idag");
             } 
             else {
-                Forsakring.tecknaHalvForsakring();
-            }
-            
-            // En nyligen köpt bil behöver tvättas innan leverans. Tvättavdelningen och deras metod för Stor tvätt anropas.
-            // Även serviceavdelningen involveras. Tyvärr visar det sig att bilen inte är i det bästa skicket :)
-            
-            System.out.println("Jag ska bara ringa till våran tvättavdelning och be dem tvätta av bilen innan leverans. ");
-            System.out.println("Likaså kommer vi göra en avstämning av bromsarna, däck och motorn på service-avdelningen innan leverans.");
-            System.out.println("");
-            System.out.println("Protokollet från dessa genomgångar syns nedanför: ");
-            System.out.println("");
-            Tvatt.StorTvatt();
-            Service.BromsService();
-            Service.DackService();
-            Service.MotorService();
-            
-            System.out.println("Vi hörs av och stämmer av en passande dag för leverans framöver!");
+                System.out.println("Säljare: Jag har förstått att du har bestämt dig för en bil. Vilken föll valet på?");
+                System.out.print("Köpare: Jag vill köpa bil: "); int kopval = scan.nextInt();
+
+                // Kund gör ett val mot bakgrund av listan som presenterades i menyn ovan (valet scannas av). Observera att vi behöver "backa" kundens val 
+                // med -1 p.g.a. att räknaren och Arrayen inte riktigt stämmer överens när vi anropar vilket objekt/bil som ska köpas i metoden Kopa (). Köpet genomförs. 
+                // Objektet/bilen tas sedan bort ifrån ArrayListan med metoden remove.
+
+                Bilar.listaBilar.get(kopval-1).Kopa();
+
+                System.out.println("Säljare: Stort GRATTIS till din nya fina bil!");
+                System.out.println("");
+
+                System.out.println("Till bilen INGÅR dessutom en försäkring i 3 månader!");
+                System.out.println("");
+
+                // Beroende på hur långt bilen/objektet har gått så ingår en hel eller halvförsäkring i köpet.
+                // Detta kollar vi genom att anropa objektets attribut för antal mil och anropar olika metoder i
+                // klassen för försäkring beroende på utfall.
+
+                System.out.print("Eftersom bilen har gått " + Bilar.listaBilar.get(kopval-1).mil + " mil så ingår det en ");
+
+                if (Bilar.listaBilar.get(kopval-1).mil < 8000){
+                    Forsakring.tecknaHelForsakring();
+                } 
+                else {
+                    Forsakring.tecknaHalvForsakring();
+                }
+                System.out.println("");
+
+                // En nyligen köpt bil behöver tvättas innan leverans. Tvättavdelningen och deras metod för Stor tvätt anropas.
+                // Även serviceavdelningen involveras. Tyvärr visar det sig att bilen inte är i det bästa skicket :)
+
+                System.out.println("Jag ska bara ringa till våran tvättavdelning och be dem tvätta av bilen innan leverans. ");
+                System.out.println("Likaså kommer vi göra en avstämning av bromsarna, däck och motorn på service-avdelningen innan leverans.");
+                System.out.println("");
+                System.out.println("Protokollet från dessa genomgångar syns nedanför: ");
+                System.out.println("");
+                Tvatt.StorTvatt();
+                Service.BromsService();
+                Service.DackService();
+                Service.MotorService();
+                System.out.println("");
+
+                System.out.println("Säljare: Vi hörs av och stämmer av en passande dag för leverans framöver!");
+                System.out.println("Köpare: Absolut, det gör vi!");
+
+                // Bilen tas bort från listan över bilar
+                Bilar.listaBilar.remove(kopval-1);
+          }
         }
             
         else if (menyval == 5){
@@ -190,7 +208,7 @@ public class BilHall {
             // om bilen som vi behöver så ställer vi några frågor om bilen som kunden får svara på. Svaren scannas av och sparas i
             // relevanta variabler. 
             
-            System.out.println("Köpa in bil. Vänligen ange mer information om din modell.");
+            System.out.println("Säljare: Om vi ska köpa in din bil vänligen ange mer information om din bil");
             System.out.println("Vad är det för bilmärke?"); 
             String inkopTillverkare = scan.next();
             System.out.println("Vad är det för modell?");
@@ -212,13 +230,13 @@ public class BilHall {
             
             Bilar.KopaInBil(inkopTillverkare, inkopModell, inkopArsmodell, inkopFarg, inkopMil, inkopPris, inkopVaxellada);
             
-            System.out.println("Tack för informationen! Vi köper in din bil för " + inkopPris + " kr och den finns nu i vårat lager");
+            System.out.println("Säljare: Tack för informationen! Vi köper in din bil för " + inkopPris + " kr och den finns nu i vårat lager");
             System.out.println("Ha en trevlig dag och titta gärna på de andra bilarna vi har i lager!");           
         }
         
         else {
             // Om kunden inte vill ha "hjälp" får kunden säga till och tas automatiskt tillbaka till startmenyn.
-            System.out.println("Jag förstår om du vill fundera. Säg till om du vill ha hjälp!");
+            System.out.println("Säljare: Jag förstår om du vill fundera. Säg till om du vill ha hjälp!");
         }
 
 
