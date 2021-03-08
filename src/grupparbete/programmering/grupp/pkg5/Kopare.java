@@ -21,7 +21,7 @@ public class Kopare {
     boolean korkort;
     int pengar;
     
-    // Skapar en ArrayList för bilarna som finns i lager
+    // Skapar en ArrayList för olika köpare (används inte just nu)
     public static ArrayList <Kopare> listaKopare = new ArrayList<>();
     
     // Konstruktor för klassen Köpare
