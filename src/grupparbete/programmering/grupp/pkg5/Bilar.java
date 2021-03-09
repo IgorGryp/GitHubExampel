@@ -21,10 +21,10 @@ public class Bilar {
     int mil;
     int pris;
     String vaxellada;
-    
+   /* 
     // Skapar en ArrayList för bilarna som finns i lager. Denna uppdateras om användaren köper eller säljer sin bil ("byter in") till bilhallen.
     public static ArrayList <Bilar> listaBilar = new ArrayList<>();
-    
+    */
     
     // Skapar konstruktor för klassen Bilar
     public Bilar (String tillverkare, String modell, String arsmodell, String farg, int mil, int pris, String vaxellada){
@@ -47,6 +47,6 @@ public class Bilar {
     }
     // Metod som "köper in" bil, med ett antal inparametrar (av samma typ som klassens konstruktor) för att kunna lägga till nya bilar till ArrayListan för bilar
     public static void KopaInBil (String inkopTillverkare, String inkopModell, String inkopArsmodell, String inkopFarg, int inkopMil, int inkopPris, String inkopVaxellada){
-       Bilar.listaBilar.add(new Bilar(inkopTillverkare, inkopModell, inkopArsmodell, inkopFarg, inkopMil, inkopPris, inkopVaxellada));
+       Lager.listaBilar.add(new Bilar(inkopTillverkare, inkopModell, inkopArsmodell, inkopFarg, inkopMil, inkopPris, inkopVaxellada));
     }
 }
