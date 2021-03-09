@@ -16,24 +16,21 @@ public class Kund {
     
     // Attribut för klassen Köpare
     final String namn;
-    String personnummer;
-    int telefonnummer;
-    boolean korkort;
-    int pengar;
+    public String typAvAffar;
+    public Bilar minBil; 
+ 
     
     // Skapar en ArrayList för olika köpare (används inte just nu)
-    public static ArrayList <Kund> ListaKunder = new ArrayList<>();
+    public static ArrayList <Kund> listaKunder = new ArrayList<>();
     
     // Konstruktor för klassen Köpare
-    public Kund (String namn, String personnummer, int telefonnummer, boolean kortkort, int pengar){
+    public Kund (String namn, String typAvAffar, Bilar minBil){
         this.namn = namn;
-        this.personnummer = personnummer;
-        this.telefonnummer = telefonnummer;
-        this.korkort = kortkort;
-        this.pengar = pengar;
+        this.typAvAffar = typAvAffar;
+        this.minBil = minBil;
     }
-    
-    //Metoder
+   
+    //Metoder    
     public static void KundSaljaBil(){
         // Kunden vill sälja bilen till bilhallen. Denna behöver komma in i listan över bilar och för att få all information
         // om bilen som vi behöver så ställer vi några frågor om bilen som kunden får svara på. Svaren scannas av och sparas i
@@ -57,12 +54,17 @@ public class Kund {
         System.out.println("");
             
         // När all information är sparad i variabler används dessa i metoden KopaInBil som ligger i Bilar-klassen. 
-        // Variablerna används som in-parametrar för metoden och så att rätt information kommer in i listan över bilar.
-            
-        Bilar.KopaInBil(inkopTillverkare, inkopModell, inkopArsmodell, inkopFarg, inkopMil, inkopPris, inkopVaxellada);
+        // minBil används för att koppla bilen till kunden
+        Bilar minBil = new Bilar(inkopTillverkare, inkopModell, inkopArsmodell, inkopFarg, inkopMil, inkopPris, inkopVaxellada);    
+        Lager.KopaInBil(minBil);
+        //Bilar.KopaInBil(new Bilar (inkopTillverkare, inkopModell, inkopArsmodell, inkopFarg, inkopMil, inkopPris, inkopVaxellada));
+        
+        //Koppla minBil till nyKund
+        //nyKund.minBil = minBil;
+        
             
         System.out.println("Säljare: Tack för informationen! Vi köper in din bil för " + inkopPris + " kr och den finns nu i vårat lager");
-        System.out.println("Ha en trevlig dag och titta gärna på de andra bilarna vi har i lager!");           
+        System.out.println("Ha en trevlig dag och titta gärna på de andra bilarna vi har i lager!");
     }
 }
 

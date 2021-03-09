@@ -57,7 +57,7 @@ public class Lager {
             }
         } 
     }
-    public static void KopaBil(){
+    public static void SaljaBil(){
        
         // Om det inte finns några bilar i lager så ges ett felmeddelande.
         if (Lager.listaBilar.size() < 1){
@@ -110,10 +110,22 @@ public class Lager {
 
             System.out.println("Säljare: Vi hörs av och stämmer av en passande dag för leverans framöver!");
             System.out.println("Köpare: Absolut, det gör vi!");
-
-            // Bilen tas bort från listan över bilar
+            
+            //Den köpta bilen läggs till i objektet nyKund
+            Menyer.nyKund.minBil = Lager.listaBilar.get(kopval-1);
+            //typ av affär ändras till köpt
+            Menyer.nyKund.typAvAffar = "köpt";
+            // Bilen tas bort från listan över bilar i lagret
             Lager.listaBilar.remove(kopval-1);
           }
     }
-
+    
+    // Metod som "köper in" bil, med ett antal inparametrar (av samma typ som klassens konstruktor) för att kunna lägga till nya bilar till ArrayListan för bilar
+    public static void KopaInBil (Bilar minBil){
+        listaBilar.add(minBil);
+        //Den sålda bilen läggs till objektet nyKund
+        Menyer.nyKund.minBil = minBil;
+        //typ av affär ändras till sålt
+        Menyer.nyKund.typAvAffar = "sålt";
+    }
 }

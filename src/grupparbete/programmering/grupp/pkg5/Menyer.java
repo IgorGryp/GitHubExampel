@@ -13,15 +13,38 @@ public class Menyer {
     private static int val;
     //Boolean för felaktigt val i menyn
     private static boolean felaktigInput = false;
+    //Objekt av ny kund
+    public static Kund nyKund;
+    
+    public static boolean ValkommenKundEllerPersonal(){
+        System.out.println("\nVälkommen till vår Bilhall!");
+        System.out.println("Logga in som:");
+        System.out.println("1 Kund");
+        System.out.println("2 Personal stänger Bilhallen");
+        System.out.print("Gör ditt val: ");
+        val = BilHall.GetInput();
+        if(val == 2)return false;
+        else return true;
+    }
+    
+    public static void Registrering(){
+        System.out.print("\nNy kund registrering krävs.\nVad heter ni? ");
+        String namn = BilHall.GetInputString();
+        //Skapar ett tomt Bilar objekt
+        Bilar minBil = new Bilar("", "", "", "", 0, 0, "");
+        //Skapar ett nyKund objekt
+        nyKund = new Kund(namn, "", minBil);
+        //Lägger till i lista över kunder
+        Kund.listaKunder.add(nyKund);
+    }
     
     public static int HuvudMeny(){
              
         // Huvudmenyn som presenteras.
         do {            
             System.out.println("");
-            System.out.println("Hej och välkommen till vår Bilhall!");
-            System.out.println("_______________________________________");
-            System.out.println("Vad vill du göra idag?");
+            System.out.println("Huvudmeny");
+            System.out.println("Vad vill du göra?");
             System.out.println("_______________________________________");
             System.out.println("");
             System.out.println("För att serva din bil - Tryck 1");
@@ -47,7 +70,7 @@ public class Menyer {
     
     public static int VerkstadsMenyn(){
         do {            
-            System.out.println("Välkommen till verkstaden!");
+            System.out.println("\nVälkommen till verkstaden!");
             System.out.println("____________________________");
             System.out.println("Vi erbjuder följande service");
             System.out.println("____________________________");
@@ -71,6 +94,29 @@ public class Menyer {
             
         } while (felaktigInput);
         return val;
+    }
+    public static boolean HandlaMerEllerNyKund(){
+        System.out.println("\n1 Gå tillbaka till huvudmenyn.");
+        System.out.println("2 Ge plats åt ny kund eller personal stänger för dagen.");
+        val = BilHall.GetInput();
+        if(val == 2)return false;
+        else return true;       
+    }
+    public static boolean FortsattaOppet(){
+        System.out.println("Vill ni stänga för dagen och få ett");
+        return true;
+    }
+    public static void Bokslut(){
+        System.out.println("Dagens kunder och bil affärer:");
+        for (Kund i : Kund.listaKunder) {
+            System.out.println(i.namn+" "+i.typAvAffar+" "+i.minBil.tillverkare);       
+        }
+        System.out.println("\nBilar i lager:");
+        int j = 1;
+        for (Bilar i: Lager.listaBilar){
+                System.out.print(j++);
+                i.Beskrivning();                   
+            }
     }
     
 }

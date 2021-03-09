@@ -16,48 +16,59 @@ public class BilHall {
    
    
     public static void main(String[] args) { 
-    
-        // Skapar person/instans av klassen Köpare.    
-        Kund Kalle = new Kund("Kalle Andersson", "901005-2936", 0, true, 100000);
-    
-        // Lägger till Kalle till listan.    
-        Kund.ListaKunder.add(Kalle);
-    
+ 
         //Fyller på listaBilar med bilar från lagret
         Lager.SkapaListaBilar();
+        
+        //Booleans för looparna
+        boolean kund;
+        boolean fortfarandeOppet = true;
 
-        // Menystrukturen ligger inne i en While-loop med vilkoret true (vilket den alltid är) för att "börja om" 
-        // när användaren är klar i respektive undermeny           
-        while (true){
-
-        //Användaren/kunden får göra sitt val (vad som ska göras i bilhallen idag).
-        int menyVal = Menyer.HuvudMeny();
+        do {         
+            kund = Menyer.ValkommenKundEllerPersonal();
+            if(!kund) fortfarandeOppet = false;           
+            
+            //Kundregistrering
+            if(kund)Menyer.Registrering();
+            
+            // Menystrukturen ligger inne i en While-loop som möjligjör fortsatt köp som samma kund           
+            while (kund){
+                //Användaren/kunden får göra sitt val (vad som ska göras i bilhallen idag).
+                int menyVal = Menyer.HuvudMeny();
     
-        System.out.println("");//Kosmetisk rad
-            //TODO snyggare att ändra dessa if-satser till switchcase
-            if (menyVal == 1){
-                menyVal = Menyer.VerkstadsMenyn();
-                Service.ServiceVal(menyVal);
-            }       
-            else if (menyVal == 2){
-                Tvatt.TvattVal();
-            }     
-            else if (menyVal == 3){
-                Lager.BilarILager();
-            }
-            else if (menyVal == 4){
-                Lager.KopaBil();
-            }   
-            else if (menyVal == 5){
-                Kund.KundSaljaBil();
-            }    
-            else {
-                //Detta allternativ kommer aldrig att kunna nås valet begränsas till 1-5 i huvudmenyns inputssäkrare
-                // Om kunden inte vill ha "hjälp" får kunden säga till och tas automatiskt tillbaka till startmenyn.
-                System.out.println("Säljare: Jag förstår om du vill fundera. Säg till om du vill ha hjälp!");
-            }
-        }//While loopens slut
-    }
+                //System.out.println("");//Kosmetisk rad
+                //TODO snyggare att ändra dessa if-satser till switchcase
+                if (menyVal == 1){
+                    menyVal = Menyer.VerkstadsMenyn();
+                    Service.ServiceVal(menyVal);
+                }       
+                else if (menyVal == 2){
+                    Tvatt.TvattVal();
+                }     
+                else if (menyVal == 3){
+                    Lager.BilarILager();
+                }
+                else if (menyVal == 4){
+                    Lager.SaljaBil();
+                }   
+                else if (menyVal == 5){
+                    Kund.KundSaljaBil();
+                }    
+                else {
+                    //Detta allternativ kommer aldrig att kunna nås valet begränsas till 1-5 i huvudmenyns inputssäkrare
+                    // Om kunden inte vill ha "hjälp" får kunden säga till och tas automatiskt tillbaka till startmenyn.
+                    System.out.println("Säljare: Jag förstår om du vill fundera. Säg till om du vill ha hjälp!");
+                }
+                kund = Menyer.HandlaMerEllerNyKund();      
+            }//While loopens slut
+ 
+        } while (fortfarandeOppet);
+        //Bokslut över dagens kunder och bilförsäljning
+        Menyer.Bokslut();
+    }           
+        
+        
+  
     
         //GetInput funktion integer
         public static int GetInput(){
