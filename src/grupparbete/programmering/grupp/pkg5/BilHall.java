@@ -43,6 +43,8 @@ public class BilHall {
                 
                 boolean bilAffar = false;
                 //TODO snyggare att ändra dessa if-satser till switchcase
+                
+                /*
                 if (menyval == 1){
                     menyval = Menyer.VerkstadsMenyn();
                     Service.ServiceVal(menyval);
@@ -66,6 +68,28 @@ public class BilHall {
                     // Om kunden inte vill ha "hjälp" får kunden säga till och tas automatiskt tillbaka till startmenyn.
                     System.out.println("Säljare: Jag förstår om du vill fundera. Säg till om du vill ha hjälp!");
                 }
+                */
+                
+                switch (menyval) {
+                    case 1:
+                        menyval = Menyer.VerkstadsMenyn();
+                        Service.ServiceVal(menyval);
+                        break;
+                    case 2:
+                        Tvatt.TvattVal();
+                        break;
+                    case 3:
+                        Lager.BilarILager();
+                        break;
+                    case 4:
+                        Lager.SaljaBil();
+                        break;
+                    case 5:
+                        Kund.KundSaljaBil();
+                        break;
+                }
+                
+                
                 if(!bilAffar)kund = Menyer.HandlaMerEllerNyKund();
                 else kund = false;
             }//While loopens slut
