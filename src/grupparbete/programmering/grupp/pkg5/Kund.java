@@ -20,7 +20,7 @@ public class Kund {
     public Bilar minBil; 
  
     
-    // Skapar en ArrayList för olika köpare (används inte just nu)
+    // Skapar en ArrayList för olika köpare
     public static ArrayList <Kund> listaKunder = new ArrayList<>();
     
     // Konstruktor för klassen Köpare
@@ -57,10 +57,6 @@ public class Kund {
         // minBil används för att koppla bilen till kunden
         Bilar minBil = new Bilar(inkopTillverkare, inkopModell, inkopArsmodell, inkopFarg, inkopMil, inkopPris, inkopVaxellada);    
         Lager.KopaInBil(minBil);
-        //Bilar.KopaInBil(new Bilar (inkopTillverkare, inkopModell, inkopArsmodell, inkopFarg, inkopMil, inkopPris, inkopVaxellada));
-        
-        //Koppla minBil till nyKund
-        //nyKund.minBil = minBil;
         
             
         System.out.println("Säljare: Tack för informationen! Vi köper in din bil för " + inkopPris + " kr och den finns nu i vårat lager");

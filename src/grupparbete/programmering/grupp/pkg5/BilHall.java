@@ -21,7 +21,9 @@ public class BilHall {
         Lager.SkapaListaBilar();
         
         //Booleans för looparna
+        //Om kund eller personal
         boolean kund;
+        //Personal stänger Bilhallen för dagen
         boolean fortfarandeOppet = true;
 
         do {         
@@ -34,28 +36,28 @@ public class BilHall {
             // Menystrukturen ligger inne i en While-loop som möjligjör fortsatt köp som samma kund           
             while (kund){
                 //Användaren/kunden får göra sitt val (vad som ska göras i bilhallen idag).
-                int menyVal = Menyer.HuvudMeny();
+                int menyval = Menyer.HuvudMeny();
                 
                 //Booleans för meny hantering, om bilaffär gjorts
                 //tvingas vi till ny kund registrering
                 
                 boolean bilAffar = false;
                 //TODO snyggare att ändra dessa if-satser till switchcase
-                if (menyVal == 1){
-                    menyVal = Menyer.VerkstadsMenyn();
-                    Service.ServiceVal(menyVal);
+                if (menyval == 1){
+                    menyval = Menyer.VerkstadsMenyn();
+                    Service.ServiceVal(menyval);
                 }       
-                else if (menyVal == 2){
+                else if (menyval == 2){
                     Tvatt.TvattVal();
                 }     
-                else if (menyVal == 3){
+                else if (menyval == 3){
                     Lager.BilarILager();
                 }
-                else if (menyVal == 4){
+                else if (menyval == 4){
                     Lager.SaljaBil();
                     bilAffar = true;
                 }   
-                else if (menyVal == 5){
+                else if (menyval == 5){
                     Kund.KundSaljaBil();
                     bilAffar = true;
                 }    

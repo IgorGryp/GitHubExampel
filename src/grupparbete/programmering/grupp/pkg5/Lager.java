@@ -72,13 +72,12 @@ public class Lager {
             // med -1 p.g.a. att räknaren och Arrayen inte riktigt stämmer överens när vi anropar vilket objekt/bil som ska köpas i metoden Kopa (). Köpet genomförs. 
             // Objektet/bilen tas sedan bort ifrån ArrayListan med metoden remove.
 
+            //Textfält data om köpt bil
             Lager.listaBilar.get(kopval-1).Kopa();
 
-            System.out.println("Säljare: Stort GRATTIS till din nya fina bil!");
-            System.out.println("");
+            System.out.println("Säljare: Stort GRATTIS till din nya fina bil!\n");
+            System.out.println("Till bilen INGÅR dessutom en försäkring i 3 månader!\n");
 
-            System.out.println("Till bilen INGÅR dessutom en försäkring i 3 månader!");
-            System.out.println("");
 
             // Beroende på hur långt bilen/objektet har gått så ingår en hel eller halvförsäkring i köpet.
             // Detta kollar vi genom att anropa objektets attribut för antal mil och anropar olika metoder i
@@ -98,10 +97,9 @@ public class Lager {
             // Även serviceavdelningen involveras. Tyvärr visar det sig att bilen inte är i det bästa skicket :)
 
             System.out.println("Jag ska bara ringa till våran tvättavdelning och be dem tvätta av bilen innan leverans. ");
-            System.out.println("Likaså kommer vi göra en avstämning av bromsarna, däck och motorn på service-avdelningen innan leverans.");
-            System.out.println("");
-            System.out.println("Protokollet från dessa genomgångar syns nedanför: ");
-            System.out.println("");
+            System.out.println("Likaså kommer vi göra en avstämning av bromsarna, däck och motorn på service-avdelningen innan leverans.\n");        
+            System.out.println("Protokollet från dessa genomgångar syns nedanför:\n");
+  
             Tvatt.StorTvatt();
             Service.BromsService();
             Service.DackService();
