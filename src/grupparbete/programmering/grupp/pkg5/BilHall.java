@@ -36,7 +36,8 @@ public class BilHall {
                 //Användaren/kunden får göra sitt val (vad som ska göras i bilhallen idag).
                 int menyVal = Menyer.HuvudMeny();
                 
-                //Booleans för meny hantering
+                //Booleans för meny hantering, om bilaffär gjorts
+                //tvingas vi till ny kund registrering
                 boolean bilAffar = false;
                 //TODO snyggare att ändra dessa if-satser till switchcase
                 if (menyVal == 1){
