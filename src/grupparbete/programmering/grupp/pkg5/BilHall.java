@@ -38,6 +38,7 @@ public class BilHall {
                 
                 //Booleans för meny hantering, om bilaffär gjorts
                 //tvingas vi till ny kund registrering
+                
                 boolean bilAffar = false;
                 //TODO snyggare att ändra dessa if-satser till switchcase
                 if (menyVal == 1){

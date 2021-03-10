@@ -47,13 +47,14 @@ public class Menyer {
             System.out.println("Vad vill du göra?");
             System.out.println("_______________________________________");
             System.out.println("");
-            System.out.println("För att serva din bil - Tryck 1");
-            System.out.println("För att få din bil tvättad - Tryck 2");
-            System.out.println("För att titta på bil - Tryck 3");
-            System.out.println("För att köpa bil - Tryck 4");
-            System.out.println("För att sälja din bil till oss - Tryck 5");
+            System.out.println("1 För att serva din bil.");
+            System.out.println("2 För att få din bil tvättad.");
+            System.out.println("3 För att titta på bil.");
+            System.out.println("4 För att köpa bil.");
+            System.out.println("5 För att sälja din bil till oss.");
             
             // Användaren/kunden får göra sitt val (vad som ska göras i bilhallen idag).
+            System.out.print("\nVälj en siffra 1 - 5: ");
             try {
                 val = BilHall.GetInput();
                 if(val < 1 || val > 5){
