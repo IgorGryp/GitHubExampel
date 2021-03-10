@@ -35,8 +35,9 @@ public class BilHall {
             while (kund){
                 //Användaren/kunden får göra sitt val (vad som ska göras i bilhallen idag).
                 int menyVal = Menyer.HuvudMeny();
-    
-                //System.out.println("");//Kosmetisk rad
+                
+                //Booleans för meny hantering
+                boolean bilAffar = false;
                 //TODO snyggare att ändra dessa if-satser till switchcase
                 if (menyVal == 1){
                     menyVal = Menyer.VerkstadsMenyn();
@@ -50,16 +51,19 @@ public class BilHall {
                 }
                 else if (menyVal == 4){
                     Lager.SaljaBil();
+                    bilAffar = true;
                 }   
                 else if (menyVal == 5){
                     Kund.KundSaljaBil();
+                    bilAffar = true;
                 }    
                 else {
                     //Detta allternativ kommer aldrig att kunna nås valet begränsas till 1-5 i huvudmenyns inputssäkrare
                     // Om kunden inte vill ha "hjälp" får kunden säga till och tas automatiskt tillbaka till startmenyn.
                     System.out.println("Säljare: Jag förstår om du vill fundera. Säg till om du vill ha hjälp!");
                 }
-                kund = Menyer.HandlaMerEllerNyKund();      
+                if(!bilAffar)kund = Menyer.HandlaMerEllerNyKund();
+                else kund = false;
             }//While loopens slut
  
         } while (fortfarandeOppet);

@@ -107,7 +107,7 @@ public class Menyer {
         return true;
     }
     public static void Bokslut(){
-        System.out.println("Dagens kunder och bil affärer:");
+        System.out.println("\nDagens kunder och bil affärer:");
         for (Kund i : Kund.listaKunder) {
             System.out.println(i.namn+" "+i.typAvAffar+" "+i.minBil.tillverkare);       
         }
